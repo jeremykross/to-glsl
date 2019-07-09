@@ -2,12 +2,12 @@
 
 ## Introduction
 
-To-GLSL is a library for converting clojure s-expressions to GLSL.  
+To-GLSL is a library for converting Clojure s-expressions to GLSL.  
 
 ### Usage
 `[to-glsl "0.1.0-SNAPSHOT"]`
 
-## Example
+### Example
 
 ```clojure
 (def basic-vs
@@ -63,7 +63,9 @@ float pi = 3.14159;
 ```
 
 `def-varying` - like def but creates a varying 
+
 `def-unifrom` - like def but creates a uniform
+
 `def-attribute` - like def but creates an attribute
 
 `set!`
@@ -77,12 +79,12 @@ x = 5;
 
 `when`
 ```clojure
-(when (= x 10)
+(when (and (= x 10) (= z 30))
   (set! y 20))
 ```
 becomes
 ```glsl
-if (x == 10) {
+if (x == 10 && z == 30) {
   y = 20;
 }
 
@@ -97,9 +99,9 @@ becomes
 y = x == 10 ? 20 : 10;
 ```
 
-`and`, `or`, `=`, `+`, `-`, `/`, `*`, `bit-and`, `bit-or`, `bit-xor`, `bit-not`, `bit-shift-right`, `bit-shift-left` - all compile into appriate infix form
+`and`, `or`, `=`, `+`, `-`, `/`, `*`, `bit-and`, `bit-or`, `bit-xor`, `bit-not`, `bit-shift-right`, `bit-shift-left` - all compile into appriate infix form.
 
-`inc` and `dec` - compile into `++` and `--` repectively
+`inc` and `dec` - compile into `++` and `--` repectively.
 
 `field`
 ```clojure
@@ -120,7 +122,11 @@ vec.xz
 
 All symbols are automatically converted from kebab case into camel case.
 
-The GLSL `gl_` symbols like `gl_Position` and `gl_FragColor` can be accessed under the `gl/` namespace in kebab case.  i.e. `gl/frag-color`
+The GLSL `gl_` symbols like `gl_Position` and `gl_FragColor` can be accessed under the `gl/` namespace in kebab case.  i.e. `gl/frag-color`.
 
-Note: To-GLSL doesn't make any attempt to validate the provided code.
+To-GLSL doesn't make any attempt to validate the provided code.
 
+### License
+Copyright 2019 Jeremy Kross
+
+Distributed under the Eclipse Public License either version 1.0 or (at your option) any later version.
