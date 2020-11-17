@@ -75,6 +75,10 @@
   [visit [_ n access]]
   [:span (compile-symbol visit n) "." (str access)])
 
+(defn- compile-call
+  [visit [_ n access]]
+  [:span (compile-symbol visit n) "." (str access) "()"])
+
 (defn- compile-swizzle
   [visit [_ n & elements]]
   [:span (compile-symbol visit n) "." (string/join (map str elements))])
@@ -106,6 +110,10 @@
           '- (infix "-")
           '/ (infix "/")
           '* (infix "*")
+          '> (infix ">")
+          '< (infix "<")
+          '>= (infix ">=")
+          '<= (infix "<=")
           'set! compile-set!
           'bit-and (infix "&")
           'bit-or (infix "|")
@@ -116,6 +124,7 @@
           'inc compile-inc
           'dec compile-dec
           'field compile-field
+          'call compile-call
           'swizzle compile-swizzle
           'do compile-do
           compile-default)]
