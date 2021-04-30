@@ -64,7 +64,7 @@ float pi = 3.14159;
 
 `def-varying` - like def but creates a varying 
 
-`def-unifrom` - like def but creates a uniform
+`def-uniform` - like def but creates a uniform
 
 `def-attribute` - like def but creates an attribute
 
